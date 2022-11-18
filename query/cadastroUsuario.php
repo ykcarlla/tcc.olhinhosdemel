@@ -1,8 +1,8 @@
 <?php
-session_start();
+
 include('conexao.php');
 
-if (isset($_POST['btnEnviar'])) {
+//if (isset($_POST['btnEnviar'])) {
     $nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
     $email = $_POST['email'];
@@ -28,4 +28,4 @@ if (isset($_POST['btnEnviar'])) {
         else {
         echo "<script> alert('Ocorreu algum erro.') </script>";
     }
-}
+//}

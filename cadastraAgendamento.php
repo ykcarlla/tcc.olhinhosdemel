@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,17 +19,17 @@
         <div class="line3"></div>
       </div>
       <ul class="nav-list">
-        <li><a href="/" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
+        <li><a href="verificaLogin.php" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
         <li><a href="#">Agendar</a></li>
-        <li><a href="/cadastraUsuario.php" class="ativa">Cadastro</a></li>
-        <li><a href="/loginUsuario.php">Entrar</a></li>
+        <li><a href="cadastraUsuario.php" class="ativa">Cadastro</a></li>
+        <li><a href="loginUsuario.php">Entrar</a></li>
       </ul>
     </nav>
   </header>
 
   <?php
-  include('query/conexao.php');
-  include('query/cadastroAgendamento.php');
+  include('conexao.php');
+
   $sql = "SELECT id_animal, nome FROM animais";
 
   $query = mysqli_query($conn, $sql);
@@ -73,7 +72,7 @@
       </select>
     </div>
     <div class="form-group">
-      <button class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar">Cadastrar</button>
+      <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar">Cadastrar</input>
       <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
     </div>
     </form>

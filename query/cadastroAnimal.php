@@ -1,10 +1,8 @@
 <?php
-session_start();
 
-$iduser = $_SESSION['iduser'];
-include('conexao.php');
+include('../conexao.php');
 
-if (isset($_POST['btnEnviar'])) {
+//if (isset($_POST['btnEnviar'])) {
     $especie = $_POST['especie'];
     $sexo = $_POST['sexo'];
     $nome_animal = $_POST['nome_animal'];
@@ -16,8 +14,8 @@ if (isset($_POST['btnEnviar'])) {
     $vacinacao = $_POST['vacinacao'];
     $comportamento = $_POST['comportamento'];
     
-    $sql = "INSERT INTO animais (especie, sexo, nome, raca, cor, porte, vacinacao, vermes, doenca, comportamento) 
-            VALUES ('$especie', '$sexo', '$nome_animal', '$raca', '$cor', '$porte', '$vacinacao', '$vermes', '$doenca', '$comportamento')";
+    $sql = "INSERT INTO animais (especie, sexo, nome, raca, cor, porte, vacinacao, vermes, doenca, comportamento, tutor) 
+            VALUES ('$especie', '$sexo', '$nome_animal', '$raca', '$cor', '$porte', '$vacinacao', '$vermes', '$doenca', '$comportamento','1')";
 
     mysqli_query($conn, $sql);
     
@@ -28,4 +26,4 @@ if (isset($_POST['btnEnviar'])) {
     else {
         echo "<script> alert('Ocorreu algum erro.') </script>";
     }
-}
+//}

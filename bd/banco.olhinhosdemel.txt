@@ -1,0 +1,78 @@
+create database olhinhosdemel;
+
+use olhinhosdemel;
+
+
+
+
+create table pessoas (
+  id_pessoas int(11) not null primary key auto_increment,
+  nome varchar(30) not null,
+  sobrenome varchar(60) not null,
+  cpf varchar(14) not null,
+  data_nasc date not null,
+  telefone varchar(14) not null,
+  email varchar(100) not null,
+  senha varchar(45) not null,
+  administrador boolean
+);
+
+create table animais (
+  id_animal int(11) not null primary key auto_increment,
+  especie varchar(20),
+  sexo varchar(20) not null,
+  nome varchar(20) not null,
+  raca varchar(30) not null,
+  cor varchar(15) not null,
+  porte varchar(10) not null,
+  vacinacao varchar(20) not null,
+  vermes varchar(5) not null,
+  doenca varchar(100) not null,
+  comportamento varchar(100) not null
+ 
+);
+
+create table agendamento_agendar(
+id_agendamento_agendar int(11) not null primary key auto_increment,
+data_agendamento date not null,
+hora varchar(5) not null,
+animal int(11) not null,
+foreign key (animal) references animais(id_animal)
+  
+); 
+
+create table pessoas (
+  id_pessoas int(11) not null primary key auto_increment,
+  nome varchar(30) not null,
+  sobrenome varchar(60) not null,
+  cpf varchar(14) not null,
+  data_nasc date not null,
+  telefone varchar(14) not null,
+  email varchar(100) not null,
+  senha varchar(45) not null,
+  administrador boolean
+);
+
+create table animais (
+  id_animal int(11) not null primary key auto_increment,
+  especie varchar(20),
+  sexo varchar(20) not null,
+  nome varchar(20) not null,
+  raca varchar(30) not null,
+  cor varchar(15) not null,
+  porte varchar(10) not null,
+  vacinacao varchar(20) not null,
+  vermes varchar(5) not null,
+  doenca varchar(100) not null,
+  comportamento varchar(100) not null
+ 
+);
+
+create table agendamento_agendar(
+id_agendamento_agendar int(11) not null primary key auto_increment,
+data_agendamento date not null,
+hora varchar(5) not null,
+animal int(11) not null,
+foreign key (animal) references animais(id_animal)
+  
+); 

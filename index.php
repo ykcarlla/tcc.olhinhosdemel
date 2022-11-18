@@ -19,9 +19,9 @@
       </div>
       <ul class="nav-list">
         <li><a style="white-space: nowrap;" href="/" class="ativa">Página Inicial</a></li>
-        <li><a href="/cadastraAgendamento.php">Agendar</a></li>
-        <li><a href="/cadastraUsuario.php">Cadastro</a></li>
-        <li><a href="/loginUsuario.php">Entrar</a></li>
+        <li><a href="cadastraAgendamento.php">Agendar</a></li>
+        <li><a href="cadastraUsuario.php">Cadastro</a></li>
+        <li><a href="loginUsuario.php">Entrar</a></li>
       </ul>
     </nav>
   </header>
