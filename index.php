@@ -19,7 +19,7 @@
       </div>
       <ul class="nav-list">
         <li><a style="white-space: nowrap;" href="/" class="ativa">Página Inicial</a></li>
-        <li><a href="cadastraAgendamento.php">Agendar</a></li>
+       
         <li><a href="cadastraUsuario.php">Cadastro</a></li>
         <li><a href="loginUsuario.php">Entrar</a></li>
       </ul>
@@ -27,53 +27,38 @@
   </header>
 
   <div class="conteudo-principal">
-    <img src="imgs/logo.png">
     <h4 class="titulo-conteudo">CASTRAÇÃO SOCIAL</h4>
 
     <div class="conteudo-secundario">
 
       <div class="coluna-um">
-        <h4>CÃES</h4>
+        <h4>ETAPA 1</h4>
 
         <div class="conteudo-coluna">
-          <p><strong>MACHO ATÉ 10KG</strong></p>
-          <small>R$ 110,00</small>
-
-          <p><strong>MACHO ACIMA DE 10KG</strong></p>
-          <small>R$ 150,00</small>
-
-          <p><strong>FÊMEA ATÉ 10KG</strong></p>
-          <small>R$ 130,00</small>
-
-          <p><strong>FÊMEA ACIMA DE 10KG</strong></p>
-          <small>R$ 150,00</small>
+          <p><strong>REALIZE SEU CADASTRO</strong></p>
+          <small>Para realizar seu cadastro, basta clicar no botão "Cadastro" da barra de menu</small>
+          <img src="imgs/barrademenucadastro.png" class="menu-cadastro">
+          
         </div>
       </div>
 
       <div class="coluna-dois">
-        <h4>GATOS</h4>
+        <h4>ETAPA 2</h4>
 
         <div class="conteudo-coluna">
-          <p><strong>MACHO</strong></p>
-          <small>R$ 50,00</small>
-
-          <p><strong>FÊMEA</strong></p>
-          <small>R$ 100,00</small>
-
+          <p><strong>REALIZE SEU LOGIN</strong></p>
+          <small>Para realizar o ligin, basta clicar no atlho "Entrar" da barra de menu.</small>
+          <img src="imgs/barrademenuagendamento.png" class="menu-agendamento">
+          
         </div>
       </div>
 
       <div class="coluna-tres">
-        <h4>ADICIONAL</h4>
+        <h4>ETAPA 3</h4>
 
         <div class="conteudo-coluna">
-          <p><strong>ROUPA CIRÚRGICA</strong></p>
-          <small>R$ 20,00</small>
-
-          <p><strong>MEDICAÇÃO ORAL</strong></p>
-          <small>R$ 20,00</small>
-
-          <p><strong>RIFOCINA <br>E ÁGUA OXIGENADA</strong></p>
+          <p><strong>REALIZE SEU AGENDAMENTO</strong></p>
+          <small>Para realizar um agendamento, basta realizar o login</small>
 
         </div>
       </div>
