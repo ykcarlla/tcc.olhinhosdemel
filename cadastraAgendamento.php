@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['logado'])) {
+  header('location: loginUsuario.php');
+exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -20,8 +27,8 @@
       </div>
       <ul class="nav-list">
         <li><a href="verificaLogin.php" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
-        <li><a href="#">Agendar</a></li>
-        <li><a href="cadastraUsuario.php" class="ativa">Cadastro</a></li>
+        <li><a href="casdatraAgendamento.php" class="ativa">Agendar</a></li>
+        <li><a href="cadastraUsuario.php">Cadastro</a></li>
         <li><a href="loginUsuario.php">Entrar</a></li>
       </ul>
     </nav>
@@ -72,7 +79,7 @@
       </select>
     </div>
     <div class="form-group">
-      <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar">Cadastrar</input>
+      <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar"></input>
       <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
     </div>
     </form>

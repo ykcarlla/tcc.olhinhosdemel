@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 
 <?php
-include('query/conexao.php');
-$sql = "SELECT * FROM dono_animal";
+include('conexao.php');
+$sql = "SELECT * FROM pessoas";
 $sql_animal = "SELECT * FROM animal";
 
 $query = mysqli_query($conn, $sql);
@@ -48,7 +48,7 @@ $query_animal = mysqli_query($conn, $sql_animal);
 <div class='container'>
 
 <div class="user-header">
-    <h3 class='p-3'>Donos Cadastrados</h3>
+    <h3 class='p-3'>Tutores Cadastrados</h3>
     <a href="cadastraUsuario.php" class="btn btn-success">Cadastrar novo</a>
 </div>
     
@@ -67,13 +67,13 @@ $query_animal = mysqli_query($conn, $sql_animal);
 
         <?php while ($dados = mysqli_fetch_array($query)) { ?>
             <tr>
-                <td><?php echo $dados['id_dono'] ?></td>
-                <td><?php echo $dados['nome_dono'] ?></td>
-                <td><?php echo $dados['sobrenome_dono'] ?></td>
-                <td><?php echo $dados['email_dono'] ?></td>
-                <td><?php echo $dados['cpf_dono'] ?></td>
-                <td><?php echo $dados['data_nasc_dono'] ?></td>
-                <td><?php echo $dados['telefone_dono'] ?></td>
+                <td><?php echo $dados['id_pessoas'] ?></td>
+                <td><?php echo $dados['nome'] ?></td>
+                <td><?php echo $dados['sobrenome'] ?></td>
+                <td><?php echo $dados['email'] ?></td>
+                <td><?php echo $dados['cpf'] ?></td>
+                <td><?php echo $dados['data_nasc'] ?></td>
+                <td><?php echo $dados['telefone'] ?></td>
                 
                 
                 <td colspan="2" class="text-center">

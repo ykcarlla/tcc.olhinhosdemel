@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,22 +21,19 @@
       <ul class="nav-list">
         <li><a href="/" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
         <li><a href="cadastraAgendamento.php">Agendar</a></li>
-        <li><a href="#" class="ativa">Cadastro</a></li>
+        <li><a href="#" class="ativa">Cadastrar</a></li>
         <li><a href="loginUsuario.php">Entrar</a></li>
       </ul>
     </nav>
   </header>
 
-  <?php
-  include('conexao.php');
-  ?>
   <div class="conteudo-principal">
     <img src="imgs/logo.png">
     <h4 class="titulo-conteudo">FAÇA SEU CADASTRO</h4>
 
     <div class="conteudo-secundario">
 
-      <form action="/query/cadastroUsuario.php" class="row g-3" method="post">
+      <form action="cadastroUsuario.php" class="row g-3" method="post">
         <div class="col-md-6">
           <label class="control-label" for="nome">Nome:</label>
           <input class="form-control" type="text" name="nome" required>
@@ -66,7 +64,7 @@
         </div>
 
         <div class="form-group">
-          <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar">Cadastrar</input>
+          <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar">
           <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
         </div>
       </form>

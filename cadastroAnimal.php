@@ -1,6 +1,6 @@
 <?php
-
-include('../conexao.php');
+session_start();
+include('conexao.php');
 
 //if (isset($_POST['btnEnviar'])) {
     $especie = $_POST['especie'];
@@ -13,9 +13,9 @@ include('../conexao.php');
     $vermes = $_POST['vermes'];
     $vacinacao = $_POST['vacinacao'];
     $comportamento = $_POST['comportamento'];
-    
+    $tutor = $_POST['tutor'];
     $sql = "INSERT INTO animais (especie, sexo, nome, raca, cor, porte, vacinacao, vermes, doenca, comportamento, tutor) 
-            VALUES ('$especie', '$sexo', '$nome_animal', '$raca', '$cor', '$porte', '$vacinacao', '$vermes', '$doenca', '$comportamento','1')";
+            VALUES ('$especie', '$sexo', '$nome_animal', '$raca', '$cor', '$porte', '$vacinacao', '$vermes', '$doenca', '$comportamento','$tutor')";
 
     mysqli_query($conn, $sql);
     

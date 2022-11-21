@@ -1,32 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
 <?php
-include('query/conexao.php');
-/*if (!isset($_SESSION['logado']) || $_SESSION['logado'] = false) {
-header('location: loginUsuario.php');
+session_start();
+if (!isset($_SESSION['logado']) || $_SESSION['adm']==false) {
+  header('location: loginUsuario.php');
 exit();
-}*/
-$id_dono = $_GET['id_dono'];
+}
+include('conexao.php');
+
+$id_dono = $_SESSION['id_tutor'];
 
 if (isset($_POST['btnSalvar'])) {
-  $nome_dono = $_POST['nome_dono'];
-  $sobrenome_dono = $_POST['sobrenome_dono'];
-  $cpf_dono = $_POST['cpf_dono'];
-  $telefone_dono = $_POST['telefone_dono'];
-  $email_dono = $_POST['email_dono'];
-  $senha_dono = $_POST['senha_dono'];
-  $data_nasc_dono =  $_POST['data_nasc_dono'];
+  $nome_dono = $_POST['nome'];
+  $sobrenome_dono = $_POST['sobrenome'];
+  $cpf_dono = $_POST['cpf'];
+  $telefone_dono = $_POST['telefone'];
+  $email_dono = $_POST['email'];
+  $senha_dono = $_POST['senha'];
+  $data_nasc_dono =  $_POST['data_nasc'];
 
-  $sql = "UPDATE dono_animal SET 
-                nome_dono='$nome_dono', 
-                sobrenome_dono='$sobrenome_dono', 
-                cpf_dono='$cpf_dono',
-                telefone_dono='$telefone_dono',  
-                data_nasc_dono='$data_nasc_dono', 
-                email_dono='$email_dono', 
-                senha_dono='$senha_dono'
-            WHERE id_dono='$id_dono'";
+  $sql = "UPDATE pessoas SET 
+                nome='$nome_dono', 
+                sobrenome='$sobrenome_dono', 
+                cpf='$cpf_dono',
+                data_nasc='$data_nasc_dono',
+                telefone='$telefone_dono',   
+                email='$email_dono', 
+                senha='$senha_dono'
+            WHERE id_pessoas='$id_dono'";
 
   mysqli_query($conn, $sql);
 
@@ -37,12 +36,10 @@ if (isset($_POST['btnSalvar'])) {
     echo "<script> alert('Ocorreu algum erro.') </script>";
   }
 }
-$sql = "SELECT * FROM dono_animal WHERE id_dono=$id_dono";
-$rs = mysqli_query($conn, $sql);
-$linha = mysqli_fetch_array($rs);
 ?>
 
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,37 +76,38 @@ $linha = mysqli_fetch_array($rs);
 
     <form class="row g-3" method="post">
       <div class="col-md-6">
-        <label class="control-label" for="nome_dono">Nome:</label>
-        <input class="form-control" type="text" name="nome_dono" value="<?php echo $linha['nome_dono'] ?>" required>
+        <label class="control-label" for="nome">Nome:</label>
+        <input class="form-control" type="text" name="nome" value="<?php echo $_SESSION['nome'] ?>" >
       </div>
       <div class="col-md-6">
-        <label class="control-label" for="sobrenome_dono">Sobrenome:</label>
-        <input class="form-control" type="text" name="sobrenome_dono" value="<?php echo $linha['sobrenome_dono'] ?>" required>
+        <label class="control-label" for="sobrenome">Sobrenome:</label>
+        <input class="form-control" type="text" name="sobrenome" value="<?php echo $_SESSION['sobrenome'] ?>" >
       </div>
       <div class="col-md-6">
         <label class="control-label" for="cpf_dono">CPF:</label>
-        <input class="form-control" type="text" name="cpf_dono" value="<?php echo $linha['cpf_dono'] ?>" required>
+        <input class="form-control" type="text" name="cpf" value="<?php echo $_SESSION['cpf'] ?>" >
       </div>
       <div class="col-md-6">
-        <label class="control-label" for="data_nasc_dono">Data de Nascimento:</label>
-        <input class="form-control" type="date" name="data_nasc_dono" value="<?php echo $linha['data_nasc_dono'] ?>">
+        <label class="control-label" for="data_nasc">Data de Nascimento:</label>
+        <input class="form-control" type="date" name="data_nasc" value="<?php echo $_SESSION['data_nasc'] ?>" >
       </div>
       <div class="col-md-6">
-        <label class="control-label" for="telefone_dono">Telefone:</label>
-        <input class="form-control" type="text" name="telefone_dono" value="<?php echo $linha['telefone_dono'] ?>" required>
+        <label class="control-label" for="telefone">Telefone:</label>
+        <input class="form-control" type="text" name="telefone" value="<?php echo $_SESSION['telefone'] ?>" >
       </div>
       <div class="col-md-6">
-        <label class="control-label" for="email_dono">E-mail:</label>
-        <input class="form-control" type="email" name="email_dono" value="<?php echo $linha['email_dono'] ?>" required>
-      </div>
-      <div class="col-md-6" id="last">
-        <label class="control-label" for="senha_dono">Senha:</label>
-        <input class="form-control" type="password" name="senha_dono" value="<?php echo $linha['senha_dono'] ?>" required>
+        <label class="control-label" for="email">E-mail:</label>
+        <input class="form-control" type="email" name="email" value="<?php echo $_SESSION['email'] ?>" >
       </div>
 
       <div class="form-group">
         <button class='btn' id="enviar" type="submit" value="Salvar" name="btnSalvar">Salvar</button>
         <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
+      </div>
+    </form>
+    <form action="excluiUsuario.php" method="$_POST">
+    <div class="form-group">
+        <button class='btn' id="excluir" type="submit" value="excluir" name="btnexcluir">Excluir</button>
       </div>
     </form>
   </div>

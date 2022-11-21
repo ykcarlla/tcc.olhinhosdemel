@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['logado'])) {
+  header('location: loginUsuario.php');
+exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,7 +30,7 @@
         <li><a href="/" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
         <li><a href="#">Agendar</a></li>
         <li><a href="/cadastraUsuario.php" class="ativa">Cadastro</a></li>
-        <li><a href="#">Entrar</a></li>
+        <li><a href="#">Perfil</a></li>
       </ul>
     </nav>
   </header>
@@ -34,7 +41,13 @@
 
     <div class="conteudo-secundario">
 
-      <form action="./query/cadastroAnimal.php" class="row g-3" method="post">
+      <form action="cadastroAnimal.php" class="row g-3" method="post">
+
+        <div class="col-md-6">
+          <label class="control-label" for="tutor">Tutor:</label>
+          <input class="form-control" type="text" name="tutor" value="<?php echo $_SESSION['id_tutor']?>">
+        </div>
+
         <div class="col-md-6" style=" margin-bottom: 1rem;">
           <label for="especie" class="control-label" style="display: flex; flex-direction: column;">Espécie:</label>
           <select class="custom-select" name="especie" style="width: 100%; height: 90%; border-radius: 5px; border: 2px #AFD4FF solid;">
@@ -109,7 +122,7 @@
         </div>
 
         <div class="form-group">
-          <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar">Cadastrar</input>
+          <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar">
           <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
         </div>
       </form>

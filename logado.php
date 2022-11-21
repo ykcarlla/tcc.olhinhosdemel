@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION['logado'])) {
+  header('location: loginUsuario.php');
+exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -20,7 +26,7 @@
       <ul class="nav-list">
         <li><a style="white-space: nowrap;" href="/" class="ativa">Página Inicial</a></li>
         <li><a href="/cadastraAgendamento.php">Agendar</a></li>
-        <li><a href="/cadastraUsuario.php">Cadastro</a></li>
+        <li><a href="/cadastraUsuario.php">Cadastrar</a></li>
         <li><a href="/logoutUsuario.php">Sair</a></li>
       </ul>
     </nav>

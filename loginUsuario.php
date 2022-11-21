@@ -1,14 +1,14 @@
 <?php
+session_start();
 include('conexao.php');
 
 //if (isset($_POST['btnEnviar'])) {
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-  echo"entrou";
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     
     if(empty('$email') || empty('$senha')) {
-        header('Location: ../loginUsuario.php');
+        header('Location: loginUsuario.php');
         exit();
     }
     $sql = "SELECT * FROM pessoas WHERE email = '$email' and senha = '$senha'";
@@ -16,16 +16,22 @@ include('conexao.php');
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-      session_start();
+        session_start();
         $row = mysqli_fetch_assoc($result);
+        $_SESSION['id_tutor'] = $row['id_pessoas'];
         $_SESSION['email'] = $email;
         $_SESSION['nome'] = $row['nome'];
         $_SESSION['sobrenome'] = $row['sobrenome'];
         $_SESSION['cpf'] = $row['cpf'];
         $_SESSION['telefone'] = $row['telefone'];
-        $_SESSION['data de nascimento'] = $row['data_nasc'];
+        $_SESSION['data_nasc'] = $row['data_nasc'];
         $_SESSION['logado'] = true;
-        header("Location: ../painelUsuario.php");
+        if($row['administrador'] == 1){
+          $_SESSION['adm'] = true;
+        }else{
+          $_SESSION['adm'] = false;
+        }
+        header("Location: logado.php");
         exit();
         } 
         else {
@@ -55,10 +61,6 @@ include('conexao.php');
 
       <span class="span-principal"><a href="/" class="principal">Página Inicial</a></span>
 
-      <ul class="nav-list">
-        <li><a href="/cadastraAgendamento.php">Agendar</a></li>
-        <li><a href="/cadastraUsuario.php">Cadastro</a></li>
-      </ul>
     </nav>
   </header>
 

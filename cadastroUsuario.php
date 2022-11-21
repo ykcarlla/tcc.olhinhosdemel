@@ -23,7 +23,7 @@ include('conexao.php');
 
     if (mysqli_affected_rows($conn) > 0) {
         echo "<p class='alerta'>Você foi cadastrado com sucesso!</p>";
-        header("Location: ../cadastraAnimal.php");
+        header("Location: ../loginUsuario.php");
     } 
         else {
         echo "<script> alert('Ocorreu algum erro.') </script>";
