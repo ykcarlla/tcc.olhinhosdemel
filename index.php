@@ -48,8 +48,8 @@
         <div class="conteudo-coluna">
           <p><strong>REALIZE SEU LOGIN</strong></p>
           <small>Para realizar o ligin, basta clicar no atlho "Entrar" da barra de menu.</small>
-          <img src="imgs/barrademenuagendamento.png" class="menu-agendamento">
-          
+          <img src="imgs/barrademenuagendar.png" class="menu-agendamento">
+
         </div>
       </div>
 
@@ -59,6 +59,7 @@
         <div class="conteudo-coluna">
           <p><strong>REALIZE SEU AGENDAMENTO</strong></p>
           <small>Para realizar um agendamento, basta realizar o login</small>
+          <img src="imgs/barrademenuagendar.png" class="menu-agendamento">
 
         </div>
       </div>

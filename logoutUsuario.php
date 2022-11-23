@@ -8,5 +8,5 @@ unset($_SESSION["data de nascimento"]);
 unset($_SESSION["telefone"]);
 unset($_SESSION["logado"]);
 session_destroy();
-header('Location: ../painelUsuario.php');
+header('Location: index.php');
 ?>

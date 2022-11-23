@@ -1,6 +1,6 @@
 <?php
+session_start();
 include('conexao.php');
-include('verificaLogin.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -34,15 +34,16 @@ include('verificaLogin.php');
 
 
   <div class="conteudo-principal">
+  <a href='editarPerfil.php'><button class='btn'>Editar</button></a>
+
     <h2><?php echo $_SESSION['email']; ?></h2>
     <h2><?php echo $_SESSION['nome']; ?></h2>
     <h2><?php echo $_SESSION['sobrenome']; ?></h2>
     <h2><?php echo $_SESSION['cpf']; ?></h2>
-    <h2><?php echo $_SESSION['data de nascimento']; ?></h2>
+    <h2><?php echo $_SESSION['data_nasc']; ?></h2>
     <h2><?php echo $_SESSION['telefone']; ?></h2>
 
 
-    <a href='query/logoutUsuario.php'><button class='btn'>Sair</button></a>
   </div>
   <script>
     class MobileNavbar {

@@ -40,6 +40,52 @@ exit();
   $sql = "SELECT id_animal, nome FROM animais";
 
   $query = mysqli_query($conn, $sql);
+
+if(isset($_GET['data'])){
+    $data_selecionada = $_GET['data'];
+    $dt = DateTime::createFromFormat("Y-m-d", $data_selecionada);
+    $dia_semana = $dt->format('D');
+    
+    if($dia_semana == 'Sat'){
+      $disponiveis = ['9','10','11'];
+    }else if($dia_semana == 'Sun'){
+      $disponiveis = [];
+    }else{
+      $disponiveis = ['9','10','11','13','14','15','16','17'];
+    }
+    $sql = "SELECT * from agendamento_agendar WHERE data_agendamento = '$data_selecionada'";
+    $indisponiveis = mysqli_query($conn, $sql);
+    while($data = mysqli_fetch_array($indisponiveis)){
+        $hora = $data['hora'];
+        if (($chave = array_search($hora, $disponiveis)) !== false) {
+            unset($disponiveis[$chave]);
+        }
+    }
+}
+
+if (isset($_POST['btnEnviar'])) {
+    $animal = $_POST['animal'];
+    $data = $_POST['data'];
+    $hora = $_POST['hora'];
+    $tutor = $_SESSION['id_tutor'];
+    if($hora == 'null'){
+        echo "<script> Selecione um horario válido </script>";
+        return;
+    }
+    $sql = "INSERT INTO agendamento_agendar (animal, data_agendamento, hora, tutor) 
+            VALUES ('$animal', '$data', '$hora', '$tutor')";
+    mysqli_query($conn, $sql);
+
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "<p class='alerta'>Agendamento feito com sucesso!</p>";
+        if (($chave = array_search($hora, $disponiveis)) !== false) {
+            unset($disponiveis[$chave]);
+        }
+    } 
+        else {
+        echo "<script> alert('Ocorreu algum erro.') </script>";
+    }
+}
   ?>
   <div class="conteudo-principal">
     <img src="imgs/logo.png">
@@ -68,7 +114,7 @@ exit();
       <select name="hora" id="hora">
         <?php if (isset($disponiveis)) {
           if (empty($disponiveis)) {
-            echo '<option value="null">Sem datas disponíveis para este dia</option>';
+            echo '<option value="null">Sem horarios disponíveis para este dia</option>';
           }
           foreach ($disponiveis as $hora) { ?>
             <option value="<?= $hora ?>"><?= $hora ?>:00</option>
