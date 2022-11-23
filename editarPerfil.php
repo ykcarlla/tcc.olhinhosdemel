@@ -6,7 +6,7 @@ exit();
 }
 include('conexao.php');
 
-$id_dono = $_SESSION['id_tutor'];
+$id_dono = $_SESSION['id_tutores'];
 
 if (isset($_POST['btnSalvar'])) {
   $nome_dono = $_POST['nome'];
@@ -16,14 +16,14 @@ if (isset($_POST['btnSalvar'])) {
   $email_dono = $_POST['email'];
   $data_nasc_dono =  $_POST['data_nasc'];
 
-  $sql = "UPDATE pessoas SET 
+  $sql = "UPDATE tutores SET 
                 nome='$nome_dono', 
                 sobrenome='$sobrenome_dono', 
                 cpf='$cpf_dono',
                 data_nasc='$data_nasc_dono',
                 telefone='$telefone_dono',   
                 email='$email_dono',
-            WHERE id_pessoas='$id_dono'";
+            WHERE id_tutores='$id_dono'";
 
   mysqli_query($conn, $sql);
 

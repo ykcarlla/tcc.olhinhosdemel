@@ -3,40 +3,39 @@ session_start();
 include('conexao.php');
 
 //if (isset($_POST['btnEnviar'])) {
-  if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    
-    if(empty('$email') || empty('$senha')) {
-        header('Location: loginUsuario.php');
-        exit();
-    }
-    $sql = "SELECT * FROM pessoas WHERE email = '$email' and senha = '$senha'";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $email = $_POST['email'];
+  $senha = $_POST['senha'];
 
-    $result = mysqli_query($conn, $sql);
+  if (empty('$email') || empty('$senha')) {
+    header('Location: loginUsuario.php');
+    exit();
+  }
+  $sql = "SELECT * FROM tutores WHERE email = '$email' and senha = '$senha'";
 
-    if (mysqli_num_rows($result) > 0) {
-        session_start();
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['id_tutor'] = $row['id_pessoas'];
-        $_SESSION['email'] = $email;
-        $_SESSION['nome'] = $row['nome'];
-        $_SESSION['sobrenome'] = $row['sobrenome'];
-        $_SESSION['cpf'] = $row['cpf'];
-        $_SESSION['telefone'] = $row['telefone'];
-        $_SESSION['data_nasc'] = $row['data_nasc'];
-        $_SESSION['logado'] = true;
-        if($row['administrador'] == 1){
-          $_SESSION['adm'] = true;
-        }else{
-          $_SESSION['adm'] = false;
-        }
-        header("Location: logado.php");
-        exit();
-        } 
-        else {
-        echo "<script> alert('Ocorreu algum erro.') </script>";
+  $result = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($result) > 0) {
+    session_start();
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['id_tutores'] = $row['id_tutores'];
+    $_SESSION['email'] = $email;
+    $_SESSION['nome'] = $row['nome'];
+    $_SESSION['sobrenome'] = $row['sobrenome'];
+    $_SESSION['cpf'] = $row['cpf'];
+    $_SESSION['telefone'] = $row['telefone'];
+    $_SESSION['data_nasc'] = $row['data_nasc'];
+    $_SESSION['logado'] = true;
+    if ($row['administrador'] == 1) {
+      $_SESSION['adm'] = true;
+    } else {
+      $_SESSION['adm'] = false;
     }
+    header("Location: logado.php");
+    exit();
+  } else {
+    echo "<script> alert('Ocorreu algum erro.') </script>";
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -54,13 +53,14 @@ include('conexao.php');
   <header>
     <nav>
       <div class="mobile-menu">
-        <div class="line1"></div>
-        <div class="line2"></div>
+        <div class="line1">
+          <span class="span-principal"><a href="/" class="principal">Página Inicial</a></span>
+        </div>
+        <div class="line2">
+          <span class="span-principal branca">Login</span>
+        </div>
         <div class="line3"></div>
       </div>
-
-      <span class="span-principal"><a href="/" class="principal">Página Inicial</a></span>
-
     </nav>
   </header>
 
@@ -69,7 +69,7 @@ include('conexao.php');
 
     <div class="conteudo-secundario">
 
-      <form action = '<?php echo $_SERVER["PHP_SELF"];?>' class="form-login" method="post">
+      <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' class="form-login" method="post">
 
         <div class="columns">
           <div class="col">
@@ -137,4 +137,5 @@ include('conexao.php');
     mobileNavbar.init();
   </script>
 </body>
+
 </html>

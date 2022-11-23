@@ -12,7 +12,7 @@ exit();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/cadastrarUsuario.css">
+  <link rel="stylesheet" href="css/cadastraAgendamento.css">
   <title>Olhinhos de Mel</title>
 </head>
 
@@ -67,13 +67,13 @@ if (isset($_POST['btnEnviar'])) {
     $animal = $_POST['animal'];
     $data = $_POST['data'];
     $hora = $_POST['hora'];
-    $tutor = $_SESSION['id_tutor'];
+    $tutores = $_SESSION['id_tutores'];
     if($hora == 'null'){
         echo "<script> Selecione um horario válido </script>";
         return;
     }
-    $sql = "INSERT INTO agendamento_agendar (animal, data_agendamento, hora, tutor) 
-            VALUES ('$animal', '$data', '$hora', '$tutor')";
+    $sql = "INSERT INTO agendamento_agendar (animal, data_agendamento, hora, tutores) 
+            VALUES ('$animal', '$data', '$hora', '$tutores')";
     mysqli_query($conn, $sql);
 
     if (mysqli_affected_rows($conn) > 0) {
@@ -104,8 +104,8 @@ if (isset($_POST['btnEnviar'])) {
             <?php } ?>
           </select>
         </div>
-    </div>
-    <div class="col-md-6">
+    
+    <div class="date">
       <label class="control-label" for="data">Data:</label>
       <input class="form-control" id="data" type="date" name="data" value="<?= $data_selecionada ?>" required>
     </div>
@@ -124,11 +124,13 @@ if (isset($_POST['btnEnviar'])) {
         <?php } ?>
       </select>
     </div>
+    </div>
     <div class="form-group">
-      <input class='btn' id="enviar" type="submit" value="Cadastrar" name="btnEnviar"></input>
+      <input class='btn' id="enviar" type="submit" value="Agendar" name="btnEnviar"></input>
       <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
     </div>
     </form>
+    
   </div>
   </div>
   <script>

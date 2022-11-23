@@ -6,26 +6,26 @@ exit();
 }
 include('conexao.php');
 
-$id_dono = $_SESSION['id_tutor'];
+$id_tutores = $_SESSION['id_tutores'];
 
 if (isset($_POST['btnSalvar'])) {
-  $nome_dono = $_POST['nome'];
-  $sobrenome_dono = $_POST['sobrenome'];
-  $cpf_dono = $_POST['cpf'];
-  $telefone_dono = $_POST['telefone'];
-  $email_dono = $_POST['email'];
-  $senha_dono = $_POST['senha'];
-  $data_nasc_dono =  $_POST['data_nasc'];
+  $nome_tutores = $_POST['nome'];
+  $sobrenome_tutores = $_POST['sobrenome'];
+  $cpf_tutores = $_POST['cpf'];
+  $telefone_tutores = $_POST['telefone'];
+  $email_tutores = $_POST['email'];
+  $senha_tutores = $_POST['senha'];
+  $data_nasc_tutores =  $_POST['data_nasc'];
 
-  $sql = "UPDATE pessoas SET 
-                nome='$nome_dono', 
-                sobrenome='$sobrenome_dono', 
-                cpf='$cpf_dono',
-                data_nasc='$data_nasc_dono',
-                telefone='$telefone_dono',   
-                email='$email_dono', 
-                senha='$senha_dono'
-            WHERE id_pessoas='$id_dono'";
+  $sql = "UPDATE tutores SET 
+                nome='$nome_tutores', 
+                sobrenome='$sobrenome_tutores', 
+                cpf='$cpf_tutores',
+                data_nasc='$data_nasc_tutores',
+                telefone='$telefone_tutores',   
+                email='$email_tutores', 
+                senha='$senha_tutores'
+            WHERE id_tutores='$id_tutores'";
 
   mysqli_query($conn, $sql);
 
@@ -70,7 +70,7 @@ if (isset($_POST['btnSalvar'])) {
 
 <div class="conteudo-principal">
 
-  <h4 class="titulo-conteudo">EDITAR DADOS DO DONO</h4>
+  <h4 class="titulo-conteudo">EDITAR DADOS DO tutores</h4>
 
   <div class="conteudo-secundario">
 
@@ -84,7 +84,7 @@ if (isset($_POST['btnSalvar'])) {
         <input class="form-control" type="text" name="sobrenome" value="<?php echo $_SESSION['sobrenome'] ?>" >
       </div>
       <div class="col-md-6">
-        <label class="control-label" for="cpf_dono">CPF:</label>
+        <label class="control-label" for="cpf_tutores">CPF:</label>
         <input class="form-control" type="text" name="cpf" value="<?php echo $_SESSION['cpf'] ?>" >
       </div>
       <div class="col-md-6">

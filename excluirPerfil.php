@@ -4,7 +4,7 @@ include('conexao.php');
 
 $email = $_SESSION['email'];
 
-$sql = "DELETE FROM pessoas WHERE email = '$email'";
+$sql = "DELETE FROM tutores WHERE email = '$email'";
 
 mysqli_query($conn, $sql);
 if (mysqli_affected_rows($conn) > 0) {

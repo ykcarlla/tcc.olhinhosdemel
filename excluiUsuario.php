@@ -2,9 +2,9 @@
 session_start();
 include('conexao.php');
 
-$id_tutor = $_SESSION['id_tutor'];
+$id_tutores = $_SESSION['id_tutores'];
 
-$sql = "DELETE FROM pessoas WHERE id_pessoas = '$id_tutor'";
+$sql = "DELETE FROM tutores WHERE id_tutores = '$id_tutores'";
 
 mysqli_query($conn, $sql);
 if (mysqli_affected_rows($conn) > 0) {

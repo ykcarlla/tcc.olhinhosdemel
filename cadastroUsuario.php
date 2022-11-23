@@ -12,7 +12,7 @@ include('conexao.php');
     $cpf = $_POST['cpf'];
     $admin = 0;
     
-    $sql = "INSERT INTO pessoas (nome, sobrenome, cpf, data_nasc, telefone, email, senha, administrador) 
+    $sql = "INSERT INTO tutores (nome, sobrenome, cpf, data_nasc, telefone, email, senha, administrador) 
             VALUES ('$nome', '$sobrenome', '$cpf', '$data_nasc', '$telefone', '$email', '$senha', '$admin')";
 
     mysqli_query($conn, $sql);

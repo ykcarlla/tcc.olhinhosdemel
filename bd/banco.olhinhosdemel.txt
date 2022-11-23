@@ -5,8 +5,8 @@ use olhinhosdemel;
 
 
 
-create table pessoas (
-  id_pessoas int(11) not null primary key auto_increment,
+create table tutores (
+  id_tutores int(11) not null primary key auto_increment,
   nome varchar(30) not null,
   sobrenome varchar(60) not null,
   cpf varchar(14) not null,
@@ -41,8 +41,8 @@ foreign key (animal) references animais(id_animal)
   
 ); 
 
-create table pessoas (
-  id_pessoas int(11) not null primary key auto_increment,
+create table tutores (
+  id_tutores int(11) not null primary key auto_increment,
   nome varchar(30) not null,
   sobrenome varchar(60) not null,
   cpf varchar(14) not null,

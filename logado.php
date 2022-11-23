@@ -27,8 +27,8 @@ exit();
       <ul class="nav-list">
         <li><a style="white-space: nowrap;" href="/" class="ativa">Página Inicial</a></li>
         <li><a href="/cadastraAgendamento.php">Agendar</a></li>
-        <li><a href="/cadastraUsuario.php">Cadastrar</a></li>
-        <li><a href="/painelusua.php">Entrar</a></li>
+        <li><a href="/cadastraAnimal.php">Cadastrar</a></li>
+        <li><a href="/painelUsuario.php">Perfil</a></li>
       </ul>
     </nav>
   </header>

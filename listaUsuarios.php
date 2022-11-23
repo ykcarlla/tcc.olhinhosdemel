@@ -3,7 +3,7 @@
 
 <?php
 include('conexao.php');
-$sql = "SELECT * FROM pessoas";
+$sql = "SELECT * FROM tutores";
 $sql_animal = "SELECT * FROM animal";
 
 $query = mysqli_query($conn, $sql);
@@ -48,7 +48,7 @@ $query_animal = mysqli_query($conn, $sql_animal);
 <div class='container'>
 
 <div class="user-header">
-    <h3 class='p-3'>Tutores Cadastrados</h3>
+    <h3 class='p-3'>tutores Cadastrados</h3>
     <a href="cadastraUsuario.php" class="btn btn-success">Cadastrar novo</a>
 </div>
     
@@ -67,7 +67,7 @@ $query_animal = mysqli_query($conn, $sql_animal);
 
         <?php while ($dados = mysqli_fetch_array($query)) { ?>
             <tr>
-                <td><?php echo $dados['id_pessoas'] ?></td>
+                <td><?php echo $dados['id_tutores'] ?></td>
                 <td><?php echo $dados['nome'] ?></td>
                 <td><?php echo $dados['sobrenome'] ?></td>
                 <td><?php echo $dados['email'] ?></td>

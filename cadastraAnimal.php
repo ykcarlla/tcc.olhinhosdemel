@@ -28,9 +28,9 @@ exit();
       </div>
       <ul class="nav-list">
         <li><a href="/" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
-        <li><a href="#">Agendar</a></li>
-        <li><a href="/cadastraUsuario.php" class="ativa">Cadastro</a></li>
-        <li><a href="#">Perfil</a></li>
+        <li><a href="/cadastraAgendamento.php">Agendar</a></li>
+        <li><a href="#" class="ativa">Cadastrar</a></li>
+        <li><a href="/painelUsuario.php">Perfil</a></li>
       </ul>
     </nav>
   </header>
@@ -43,10 +43,7 @@ exit();
 
       <form action="cadastroAnimal.php" class="row g-3" method="post">
 
-        <div class="col-md-6">
-          <label class="control-label" for="tutor">Tutor:</label>
-          <input class="form-control" type="text" name="tutor" value="<?php echo $_SESSION['id_tutor']?>">
-        </div>
+      <input class="form-control" type="hidden" name="tutores" value="<?php echo $_SESSION['id_tutores']?>">
 
         <div class="col-md-6" style=" margin-bottom: 1rem;">
           <label for="especie" class="control-label" style="display: flex; flex-direction: column;">Espécie:</label>

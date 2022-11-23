@@ -13,10 +13,11 @@ include('conexao.php');
     $vermes = $_POST['vermes'];
     $vacinacao = $_POST['vacinacao'];
     $comportamento = $_POST['comportamento'];
-    $tutor = $_POST['tutor'];
+    $tutores = $_POST['tutores'];
+   
     $sql = "INSERT INTO animais (especie, sexo, nome, raca, cor, porte, vacinacao, vermes, doenca, comportamento, tutor) 
-            VALUES ('$especie', '$sexo', '$nome_animal', '$raca', '$cor', '$porte', '$vacinacao', '$vermes', '$doenca', '$comportamento','$tutor')";
-
+            VALUES ('$especie', '$sexo', '$nome_animal', '$raca', '$cor', '$porte', '$vacinacao', '$vermes', '$doenca', '$comportamento','$tutores')";
+echo $sql;
     mysqli_query($conn, $sql);
     
     if (mysqli_affected_rows($conn) > 0) {
