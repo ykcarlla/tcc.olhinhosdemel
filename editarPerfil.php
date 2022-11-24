@@ -6,29 +6,35 @@ exit();
 }
 include('conexao.php');
 
-$id_dono = $_SESSION['id_tutores'];
+$id = $_SESSION['id_tutores'];
 
 if (isset($_POST['btnSalvar'])) {
-  $nome_dono = $_POST['nome'];
-  $sobrenome_dono = $_POST['sobrenome'];
-  $cpf_dono = $_POST['cpf'];
-  $telefone_dono = $_POST['telefone'];
-  $email_dono = $_POST['email'];
-  $data_nasc_dono =  $_POST['data_nasc'];
+  $nome = $_POST['nome'];
+  $sobrenome = $_POST['sobrenome'];
+  $cpf = $_POST['cpf'];
+  $telefone = $_POST['telefone'];
+  $email = $_POST['email'];
+  $data_nasc =  $_POST['data_nasc'];
 
   $sql = "UPDATE tutores SET 
-                nome='$nome_dono', 
-                sobrenome='$sobrenome_dono', 
-                cpf='$cpf_dono',
-                data_nasc='$data_nasc_dono',
-                telefone='$telefone_dono',   
-                email='$email_dono',
-            WHERE id_tutores='$id_dono'";
+                nome='$nome', 
+                sobrenome='$sobrenome', 
+                cpf='$cpf',
+                data_nasc='$data_nasc',
+                telefone='$telefone',   
+                email='$email'
+            WHERE id_tutores='$id'";
 
   mysqli_query($conn, $sql);
 
   if (mysqli_affected_rows($conn) > 0) {
     echo "<script> alert('Usuário alterado com sucesso.') </script>";
+    $_SESSION['email'] = $email;
+    $_SESSION['nome'] = $nome;
+    $_SESSION['sobrenome'] = $sobrenome;
+    $_SESSION['cpf'] = $cpf;
+    $_SESSION['telefone'] = $telefone;
+    $_SESSION['data_nasc'] = $data_nasc;
     header("Location: painelUsuario.php");
   } else {
     echo "<script> alert('Ocorreu algum erro.') </script>";
@@ -82,7 +88,7 @@ if (isset($_POST['btnSalvar'])) {
         <input class="form-control" type="text" name="sobrenome" value="<?php echo $_SESSION['sobrenome'] ?>" >
       </div>
       <div class="col-md-6">
-        <label class="control-label" for="cpf_dono">CPF:</label>
+        <label class="control-label" for="cpf">CPF:</label>
         <input class="form-control" type="text" name="cpf" value="<?php echo $_SESSION['cpf'] ?>" >
       </div>
       <div class="col-md-6">

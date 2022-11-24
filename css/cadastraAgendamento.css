@@ -151,7 +151,7 @@ header {
 
 
 
-.col-md-6, .date{
+.col-md-6, #data{
     margin-bottom: 1rem;
     width: 20rem;
 }

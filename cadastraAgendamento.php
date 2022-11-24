@@ -27,7 +27,7 @@ exit();
       </div>
       <ul class="nav-list">
         <li><a href="verificaLogin.php" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
-        <li><a href="casdatraAgendamento.php" class="ativa">Agendar</a></li>
+        <li><a href="cadastraAgendamento.php" class="ativa">Agendar</a></li>
         <li><a href="cadastraUsuario.php">Cadastro</a></li>
         <li><a href="loginUsuario.php">Entrar</a></li>
       </ul>
@@ -72,7 +72,7 @@ if (isset($_POST['btnEnviar'])) {
         echo "<script> Selecione um horario válido </script>";
         return;
     }
-    $sql = "INSERT INTO agendamento_agendar (animal, data_agendamento, hora, tutores) 
+    $sql = "INSERT INTO agendamento_agendar (animal, data_agendamento, hora, tutor) 
             VALUES ('$animal', '$data', '$hora', '$tutores')";
     mysqli_query($conn, $sql);
 
@@ -105,9 +105,9 @@ if (isset($_POST['btnEnviar'])) {
           </select>
         </div>
     
-    <div class="date">
+    <div class="col-md-6">
       <label class="control-label" for="data">Data:</label>
-      <input class="form-control" id="data" type="date" name="data" value="<?= $data_selecionada ?>" required>
+      <input class="form-control" id="data" type="date" name="data" value="<?php echo $data_selecionada ?>" required>
     </div>
     <div class="col-md-6">
       <label class="control-label" for="hora">Hora:</label>
@@ -134,7 +134,7 @@ if (isset($_POST['btnEnviar'])) {
   </div>
   </div>
   <script>
-    document.querySelector('#data').addEventListener('change', () => {
+    document.querySelector('#data').addEventListener('input', () => {
       window.location.href = 'cadastraAgendamento.php?data=' + document.querySelector('#data').value;
     })
     class MobileNavbar {

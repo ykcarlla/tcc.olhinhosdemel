@@ -6,7 +6,10 @@ exit();
 }
 include('conexao.php');
 
-$id_tutores = $_SESSION['id_tutores'];
+$id_tutores = $_GET['id_tutor'];
+$sql = "SELECT * FROM tutores WHERE id_tutores = $id_tutores";
+$query = mysqli_query($conn, $sql);
+$dados = mysqli_fetch_array($query);
 
 if (isset($_POST['btnSalvar'])) {
   $nome_tutores = $_POST['nome'];
@@ -31,7 +34,7 @@ if (isset($_POST['btnSalvar'])) {
 
   if (mysqli_affected_rows($conn) > 0) {
     echo "<script> alert('Usuário alterado com sucesso.') </script>";
-    header("Location: listaUsuarios.php");
+    header("Location: listaTutores.php");
   } else {
     echo "<script> alert('Ocorreu algum erro.') </script>";
   }
@@ -77,27 +80,27 @@ if (isset($_POST['btnSalvar'])) {
     <form class="row g-3" method="post">
       <div class="col-md-6">
         <label class="control-label" for="nome">Nome:</label>
-        <input class="form-control" type="text" name="nome" value="<?php echo $_SESSION['nome'] ?>" >
+        <input class="form-control" type="text" name="nome" value="<?php echo $dados['nome'] ?>" >
       </div>
       <div class="col-md-6">
         <label class="control-label" for="sobrenome">Sobrenome:</label>
-        <input class="form-control" type="text" name="sobrenome" value="<?php echo $_SESSION['sobrenome'] ?>" >
+        <input class="form-control" type="text" name="sobrenome" value="<?php echo $dados['sobrenome'] ?>" >
       </div>
       <div class="col-md-6">
         <label class="control-label" for="cpf_tutores">CPF:</label>
-        <input class="form-control" type="text" name="cpf" value="<?php echo $_SESSION['cpf'] ?>" >
+        <input class="form-control" type="text" name="cpf" value="<?php echo $dados['cpf'] ?>" >
       </div>
       <div class="col-md-6">
         <label class="control-label" for="data_nasc">Data de Nascimento:</label>
-        <input class="form-control" type="date" name="data_nasc" value="<?php echo $_SESSION['data_nasc'] ?>" >
+        <input class="form-control" type="date" name="data_nasc" value="<?php echo $dados['data_nasc'] ?>" >
       </div>
       <div class="col-md-6">
         <label class="control-label" for="telefone">Telefone:</label>
-        <input class="form-control" type="text" name="telefone" value="<?php echo $_SESSION['telefone'] ?>" >
+        <input class="form-control" type="text" name="telefone" value="<?php echo $dados['telefone'] ?>" >
       </div>
       <div class="col-md-6">
         <label class="control-label" for="email">E-mail:</label>
-        <input class="form-control" type="email" name="email" value="<?php echo $_SESSION['email'] ?>" >
+        <input class="form-control" type="email" name="email" value="<?php echo $dados['email'] ?>" >
       </div>
 
       <div class="form-group">

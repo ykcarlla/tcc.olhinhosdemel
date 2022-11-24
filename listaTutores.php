@@ -3,8 +3,17 @@
 
 <?php
 include('conexao.php');
+session_start();
+if (!isset($_SESSION['logado'])) {
+  header('location: loginUsuario.php');
+exit();
+}
+if (!$_SESSION['adm']){
+  header('location: semPermissao.php');
+  exit(); 
+}
 $sql = "SELECT * FROM tutores";
-$sql_animal = "SELECT * FROM animal";
+$sql_animal = "SELECT * FROM animais";
 
 $query = mysqli_query($conn, $sql);
 
@@ -77,8 +86,8 @@ $query_animal = mysqli_query($conn, $sql_animal);
                 
                 
                 <td colspan="2" class="text-center">
-                    <a class='btn btn-info btn-sm' href='editaUsuario.php?id_dono=<?php echo $dados['id_dono'] ?>'>Editar</a>
-                    <a class='btn btn-danger btn-sm' href='#' onclick='confirmar("<?php echo $dados['id_dono'] ?>")'>Excluir</a></td>
+                    <a class='btn btn-info btn-sm' href='editaTutor.php?id_tutor=<?php echo $dados['id_tutores'] ?>'>Editar</a>
+                    <a class='btn btn-danger btn-sm' href='excluirTutor.php?id_tutor=<?php echo $dados['id_tutores']?>' onclick='confirmar("<?php echo $dados['id_tutores'] ?>")'>Excluir</a></td>
             </tr>
         <?php } ?>
     </table>
@@ -109,7 +118,7 @@ $query_animal = mysqli_query($conn, $sql_animal);
         <?php while ($dados_animal = mysqli_fetch_array($query_animal)) { ?>
             <tr>
                 <td><?php echo $dados_animal['id_animal'] ?></td>
-                <td><?php echo $dados_animal['nome_animal'] ?></td>
+                <td><?php echo $dados_animal['nome'] ?></td>
                 <td><?php echo $dados_animal['especie'] ?></td>
                 <td><?php echo $dados_animal['sexo'] ?></td>
                 <td><?php echo $dados_animal['raca'] ?></td>
@@ -122,8 +131,8 @@ $query_animal = mysqli_query($conn, $sql_animal);
 
 
                 <td colspan="2" class="text-center">
-                    <a class='btn btn-info btn-sm' href='editaUsuario.php?id_dono=<?php echo $dados['id_animal'] ?>'>Editar</a>
-                    <a class='btn btn-danger btn-sm' href='#' onclick='confirmar_animal("<?php echo $dados['id_animal'] ?>")'>Excluir</a></td>
+                    <a class='btn btn-info btn-sm' href='editarAnimais.php?id_animal=<?php echo $dados_animal['id_animal'] ?>'>Editar</a>
+                    <a class='btn btn-danger btn-sm' href='excluirAnimais.php?id_animal=<?php echo $dados_animal['id_animal'] ?>' onclick='confirmar_animal("<?php echo $dados['id_animal'] ?>")'>Excluir</a></td>
             </tr>
         <?php } ?>
     </table>
@@ -131,9 +140,9 @@ $query_animal = mysqli_query($conn, $sql_animal);
 </div>
 <script>
 
-    function confirmar(id_dono) {
+    function confirmar(id_tutores) {
         if (confirm('Você realmente deseja excluir esta linha?'))
-            location.href = 'query/excluiUsuario.php?id_dono=' + id_dono;
+            location.href = 'query/excluiUsuario.php?id_dono=' + id_tutores;
     }
     function confirmar_animal(id_animal) {
         if (confirm('Você realmente deseja excluir esta linha?'))

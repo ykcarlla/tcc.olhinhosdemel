@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['logado'])) {
   header('location: loginUsuario.php');
-  exit();
+exit();
 }
 ?>
 <!DOCTYPE html>
@@ -12,49 +12,82 @@ if (!isset($_SESSION['logado'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/cadastraAgendamento.css">
+  <link rel="stylesheet" href="css/paginaLogado.css">
   <title>Olhinhos de Mel</title>
 </head>
 
 <body>
   <header>
     <nav class="header__nav">
-      <p></p>
       <div class="mobile-menu">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
       </div>
       <ul class="nav-list">
-        <li><a href="verificaLogin.php" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
-        <li><a href="casdatraAgendamento.php" class="ativa">Agendar</a></li>
-        <li><a href="cadastraUsuario.php">Cadastro</a></li>
-        <li><a href="loginUsuario.php">Entrar</a></li>
+        <li><a style="white-space: nowrap;" href="/" class="ativa">Página Inicial</a></li>
+        <li><a href="/cadastraAgendamento.php">Agendar</a></li>
+        <li><a href="/cadastraAnimal.php">Cadastrar</a></li>
+        <li><a href="/painelUsuario.php">Perfil</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="conteudo-principal">
     <img src="imgs/logo.png">
-    <h4 class="titulo-conteudo">VEJA OS AGENDAMENTOS</h4>
+    <h4 class="titulo-conteudo">Você não tem permissão!</h4>
 
     <div class="conteudo-secundario">
 
-      <form class="row g-3" action='listaAgendamentos.php' method="post">
-        <div class="date">
-          <label class="control-label" for="data">Data:</label>
-          <input class="form-control" id="data" type="date" name="data" required>
-        </div>
-    </div>
-    <div class="form-group">
-      <input class='btn' id="enviar" type="submit" value="Consultar" name="btnEnviar"></input>
-      <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
-    </div>
-    </form>
+      <div class="coluna-um">
+        <h4>CÃES</h4>
 
+        <div class="conteudo-coluna">
+          <p><strong>MACHO ATÉ 10KG</strong></p>
+          <small>R$ 110,00</small>
+
+          <p><strong>MACHO ACIMA DE 10KG</strong></p>
+          <small>R$ 150,00</small>
+
+          <p><strong>FÊMEA ATÉ 10KG</strong></p>
+          <small>R$ 130,00</small>
+
+          <p><strong>FÊMEA ACIMA DE 10KG</strong></p>
+          <small>R$ 150,00</small>
+        </div>
+      </div>
+
+      <div class="coluna-dois">
+        <h4>GATOS</h4>
+
+        <div class="conteudo-coluna">
+          <p><strong>MACHO</strong></p>
+          <small>R$ 50,00</small>
+
+          <p><strong>FÊMEA</strong></p>
+          <small>R$ 100,00</small>
+
+        </div>
+      </div>
+
+      <div class="coluna-tres">
+        <h4>ADICIONAL</h4>
+
+        <div class="conteudo-coluna">
+          <p><strong>ROUPA CIRÚRGICA</strong></p>
+          <small>R$ 20,00</small>
+
+          <p><strong>MEDICAÇÃO ORAL</strong></p>
+          <small>R$ 20,00</small>
+
+          <p><strong>RIFOCINA <br>E ÁGUA OXIGENADA</strong></p>
+
+        </div>
+      </div>
+
+    </div>
   </div>
-  </div>
-</body>
+
   <script>
     class MobileNavbar {
       constructor(mobileMenu, navList, navLinks) {
@@ -101,5 +134,6 @@ if (!isset($_SESSION['logado'])) {
     );
     mobileNavbar.init();
   </script>
+</body>
 
 </html>
