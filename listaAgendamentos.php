@@ -4,7 +4,12 @@
 <?php
 include('conexao.php');
 session_start();
-$data = $_SESSION['data'];
+if (!isset($_SESSION['logado'])) {
+  header('location: loginUsuario.php');
+exit();
+}
+
+$data = $_POST['data'];
 $sql = "SELECT * FROM agendamento_agendar WHERE data_agendamento = '$data'";
 
 $query = mysqli_query($conn, $sql);
@@ -47,26 +52,34 @@ $query = mysqli_query($conn, $sql);
 <div class='container'>
 
 <div class="user-header">
-    <h3 class='p-3'>AGENDAMENTOS DO DIA <?php echo $data = $_SESSION['data'];?></h3>
+    <h3 class='p-3'>AGENDAMENTOS DO DIA <?php echo $data;?></h3>
 </div>
     
 <div class="card-agenda">
-<?php while ($dados = mysqli_fetch_array($query)) { ?>
-<h3 class='p-3'><?php echo $dados['hora'] ?>h</h3>
-</div>
-<?php } ?>
-
     <table class='table table-hover'>
         <tr>
             <td>Data</td>
         </tr>
 
-        <?php while ($dados = mysqli_fetch_array($query)) { ?>
+        <?php
+        while ($dados = mysqli_fetch_array($query)) { ?>
             <tr>
-                <td><?php echo $data = $_SESSION['data'];?></td>
+                <td><?php echo $data?></td>
                 <td><?php echo $dados['hora'] ?></td>
-                
-                
+                <?php
+                $id_tutor = $dados['tutor'];
+                $sql_tutor = "SELECT nome FROM tutores WHERE id_tutores = $id_tutor";              
+                $query_tutor = mysqli_query($conn, $sql_tutor);
+                $dados_tutor = mysqli_fetch_array($query_tutor);
+                ?>
+
+                <?php
+                $id_animal = $dados['animais'];
+                $sql_animal = "SELECT nome FROM animais WHERE id_animal = $id_animal";              
+                $query_animal = mysqli_query($conn, $sql_animal);
+                $dados_animal = mysqli_fetch_array($query_animal);
+                ?>
+                <td><?php echo $dados_tutor['nome'] ?></td>
                 <td colspan="2" class="text-center">
             </tr>
         <?php } ?>
