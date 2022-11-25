@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $row = mysqli_fetch_assoc($result);
     $_SESSION['id_tutores'] = $row['id_tutores'];
     $_SESSION['email'] = $email;
+    $_SESSION['senha'] = $senha;
     $_SESSION['nome'] = $row['nome'];
     $_SESSION['sobrenome'] = $row['sobrenome'];
     $_SESSION['cpf'] = $row['cpf'];
@@ -28,6 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['logado'] = true;
     if ($row['administrador'] == 1) {
       $_SESSION['adm'] = true;
+      header("Location: agendamentos.php");
+      exit();
     } else {
       $_SESSION['adm'] = false;
     }
@@ -51,16 +54,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
   <header>
-    <nav>
+    <nav class="header__nav">
+    
       <div class="mobile-menu">
-        <div class="line1">
-          <span class="span-principal"><a href="/" class="principal">Página Inicial</a></span>
-        </div>
-        <div class="line2">
-          <span class="span-principal branca">Login</span>
-        </div>
+        <div class="line1"></div>
+        <div class="line2"></div>
         <div class="line3"></div>
       </div>
+
+      <ul class="nav-list">
+        <li><a style="white-space: nowrap;" href="/" class="ativa">Página Inicial</a></li>
+        <li><a href="/cadastraUsuario.php">Cadastro</a></li>
+      </ul>
     </nav>
   </header>
 

@@ -73,7 +73,7 @@ if (isset($_POST['btnSalvar'])) {
 
 <div class="conteudo-principal">
 
-  <h4 class="titulo-conteudo">EDITAR DADOS DO tutores</h4>
+  <h4 class="titulo-conteudo">EDITAR DADOS DO TUTOR</h4>
 
   <div class="conteudo-secundario">
 
@@ -101,6 +101,10 @@ if (isset($_POST['btnSalvar'])) {
       <div class="col-md-6">
         <label class="control-label" for="email">E-mail:</label>
         <input class="form-control" type="email" name="email" value="<?php echo $dados['email'] ?>" >
+      </div>
+      <div class="col-md-6">
+        <label class="control-label" for="email">Senha:</label>
+        <input class="form-control" type="text" name="senha" value="<?php echo $dados['senha'] ?>" >
       </div>
 
       <div class="form-group">

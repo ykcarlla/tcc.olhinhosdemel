@@ -181,12 +181,44 @@ header {
     padding-bottom: 2.3rem;
 }
 
-.btn {
-    width: 150px;
-    height: 45px;
-    font-size: large;
-    margin-top: 2rem;
+.btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn-edit {
+    width: 90px;
+    height: 33px;
+    font-size: 20px;
     background: #AFD4FF;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .btn-ex {
+    width: 90px;
+    height: 33px;
+    font-size: 20px;
+    background: #fe0808;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  .btn-ex:hover {
+    background: #fff;
+    border: 1px solid red;
+    color: red;
+  }
+  
+  .btn-ca {
+    width: 250px;
+    height: 33px;
+    font-size: 20px;
+    background: #AFD4FF;
+    border: none;
+    border-radius: 5px;
   }
   
   .btn:hover {
@@ -194,6 +226,17 @@ header {
     color: #fff;
   }
 
+  .dados {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: #AFD4FF 3px solid;
+  }
+
+  #hover:hover {
+    background: #378ef0;
+  }
+  
 @media only screen and (max-width: 768px) {
 
 .nav-list, .ativa {

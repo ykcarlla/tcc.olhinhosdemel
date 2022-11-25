@@ -24,9 +24,10 @@ echo $sql;
 
     if (mysqli_affected_rows($conn) > 0) {
         echo "<p class='alerta'>Seus dados foram cadastrados com sucesso!</p>";
-        header("Location: ../cadastraAgendamento.php");
+        header("Location: ../cadastraAnimal.php");
     } 
     else {
         echo "<script> alert('Ocorreu algum erro.') </script>";
     }
 //}
+?>

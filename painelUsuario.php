@@ -26,7 +26,7 @@ include('conexao.php');
       <ul class="nav-list">
         <li><a style="white-space: nowrap;" href="/" class="ativa">Página Inicial</a></li>
         <li><a href="/cadastraAgendamento.php">Agendar</a></li>
-        <li><a href="/cadastraUsuario.php">Cadastro</a></li>
+        <li><a href="/cadastraAnimal.php">Animais</a></li>
         <li><a href="/logoutUsuario.php">Sair</a></li>
       </ul>
     </nav>
@@ -34,18 +34,29 @@ include('conexao.php');
 
 
   <div class="conteudo-principal">
-  <a href='editarPerfil.php'><button class='btn'>Editar</button></a>
-
-    <h2><?php echo $_SESSION['email']; ?></h2>
-    <h2><?php echo $_SESSION['nome']; ?></h2>
-    <h2><?php echo $_SESSION['sobrenome']; ?></h2>
-    <h2><?php echo $_SESSION['cpf']; ?></h2>
-    <h2><?php echo $_SESSION['data_nasc']; ?></h2>
-    <h2><?php echo $_SESSION['telefone']; ?></h2>
-
+  <h4 class="titulo-conteudo">PERFIL</h4>
+    <div class="btns">
+    <a href='editarPerfil.php'><button class='btn-edit' id="hover">Editar</button></a>
+    <a href='cadastraNovoAnimal.php'><button class='btn-ca' id="hover">Cadastrar novo animal</button></a>
+    <a href='excluirPerfil.php?id_tutor=<?php echo $_SESSION['id_tutores']?>' onclick='confirmar("<?php echo $dados['id_tutores'] ?>")'><button class='btn-ex'>Excluir</button></a>
+    </div>
+  
+    <div class="dados">
+    <h3>Nome: <span style="color: grey"><?php echo $_SESSION['nome']; ?></span></h3>
+    <h3>Sobrenome: <span style="color: grey"><?php echo $_SESSION['sobrenome']; ?></span></h3>
+    <h3>Email: <span style="color: grey"><?php echo $_SESSION['email']; ?></span></h3>
+    <h3>CPF: <span style="color: grey"><?php echo $_SESSION['cpf']; ?></span></h3>
+    <h3>Data de Nascimento: <span style="color: grey"><?php echo $_SESSION['data_nasc']; ?></span></h3>
+    <h3>Telefone: <span style="color: grey"><?php echo $_SESSION['telefone']; ?></span></h3>
+    </div>
 
   </div>
   <script>
+   function confirmar(id_tutores) {
+        if (confirm('Você realmente deseja seu perfil?'))
+            location.href = 'query/excluiPerfil.php?id_dono=' + id_tutores;
+    }
+
     class MobileNavbar {
       constructor(mobileMenu, navList, navLinks) {
         this.mobileMenu = document.querySelector(mobileMenu);

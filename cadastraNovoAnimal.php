@@ -34,22 +34,14 @@ exit();
       </ul>
     </nav>
   </header>
-  <?php
-  include('conexao.php');
 
-  $sql = "SELECT * FROM animais";
-
-  $query = mysqli_query($conn, $sql);
-  ?>
-<?php 
-if(!isset($_SESSION['id_animal'])) {?>
  <div class="conteudo-principal">
     <img src="imgs/logo.png">
     <h4 class="titulo-conteudo">CADASTRE SEU ANIMALZINHO</h4>
 
     <div class="conteudo-secundario">
 
-      <form action="cadastroAnimal.php" class="row g-3" method="post">
+      <form action="cadastroNovoAnimal.php" class="row g-3" method="post">
 
       <input class="form-control" type="hidden" name="tutores" value="<?php echo $_SESSION['id_tutores']?>">
 
@@ -133,56 +125,8 @@ if(!isset($_SESSION['id_animal'])) {?>
       </form>
     </div>
   </div>
-<?php } else {?>
-  <div class="user-header">
-    <h3 class='p-3'>Animais Cadastrados</h3>
-    <a href="cadastraNovoAnimal.php" class="btn btn-success">Cadastrar novo</a>
-</div>
-    <table class='table table-hover' id="table-animal">
-        <tr>
-            <td>ID</td>
-            <td>Nome</td>
-            <td>Espécie</td>
-            <td>Sexo</td>
-            <td>Raça</td>
-            <td>Cor</td>
-            <td>Porte</td>
-            <td>Vacinado</td>
-            <td>Vermes</td>
-            <td>Doenças</td>
-            <td>Comportamento</td>
-            <td>Ação</td>
-        </tr>
 
-        <?php while ($dados = mysqli_fetch_array($query)) { ?>
-            <tr>
-                <td><?php echo $dados['id_animal'] ?></td>
-                <td><?php echo $dados['nome'] ?></td>
-                <td><?php echo $dados['especie'] ?></td>
-                <td><?php echo $dados['sexo'] ?></td>
-                <td><?php echo $dados['raca'] ?></td>
-                <td><?php echo $dados['cor'] ?></td>
-                <td><?php echo $dados['porte'] ?></td>
-                <td><?php echo $dados['vacinacao'] ?></td>
-                <td><?php echo $dados['vermes'] ?></td>
-                <td><?php echo $dados['doenca'] ?></td>
-                <td><?php echo $dados['comportamento'] ?></td>
-
-
-                <td colspan="2">
-                    <a class='btn btn-info btn-sm' id="edit" href='editaNovoAnimal.php?id_animal=<?php echo $dados['id_animal'] ?>'>Editar</a>
-                    <a class='btn btn-danger btn-sm' id="delete" href='excluirNovoAnimal.php?id_animal=<?php echo $dados['id_animal'] ?>' onclick='confirmar_animal("<?php echo $dados['id_animal'] ?>")'>Excluir</a></td>
-            </tr>
-        <?php } ?>
-    </table>
-<?php } ?>
   <script>
-
-function confirmar_animal(id_animal) {
-        if (confirm('Você realmente deseja excluir esta linha?'))
-            location.href = 'excluirNovoAnimal.php?id_animal=' + id_animal;
-    }
-
     class MobileNavbar {
       constructor(mobileMenu, navList, navLinks) {
         this.mobileMenu = document.querySelector(mobileMenu);

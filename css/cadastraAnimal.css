@@ -175,19 +175,18 @@ header {
 }
 
 .btn {
-    width:150px;
-    height: 45px;
-    font-size: large;
-    margin-top: 1rem;
+  width:150px;
+  height: 45px;
+  font-size: large;
 }
 
 #enviar {
-    background: #AFD4FF;
+  background: #AFD4FF;
 }
 
 #enviar:hover {
-    background: #378ef0;
-    color: #fff;
+  background: #378ef0;
+  color: #fff;
 }
 
 .alerta {
@@ -200,6 +199,39 @@ header {
     padding: 1rem;
     background: #affffe;
     border-radius: 5px;
+}
+
+
+#table-animal {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.user-header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.user-header .btn {
+  height: 40px;
+  margin-top: 1rem;
+  background: #AFD4FF;
+  border: 0;
+  
+}
+ 
+
+.user-header .btn:hover {
+  background: #378ef0;
+}
+
+#edit, #delete {
+  width: 100px;
+  height: 35px;
+  padding-bottom: 1px;
 }
 
 @media only screen and (max-width: 768px) {

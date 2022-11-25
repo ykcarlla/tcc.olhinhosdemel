@@ -3,11 +3,7 @@
     padding: 0;
 }
 
-header {
-  background-color: #AFD4FF;
-}
-
-  .header__nav {
+  nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -15,8 +11,6 @@ header {
     background: #AFD4FF;
     height: 8vh;
     font-family: sans-serif;
-    margin: 0 auto;
-    max-width: 840px;
   }
   
   a {
@@ -31,9 +25,8 @@ header {
     gap: 38px;
     font-size: 20px;
     text-align: center;
-    /* margin-right: 15rem; */
+    margin-right: 15rem;
     margin-top: 1rem;
-    padding: 0 !important;
   }
 
   .nav-list a:hover {
@@ -119,7 +112,7 @@ header {
 
 .conteudo-principal {
     width: 850px;
-    height: 630px;
+    height: 800px;
     padding: 2rem;
     border: 1px grey solid;
     box-shadow: 1px 1px 1px grey;
@@ -193,8 +186,6 @@ header {
     background: #affffe;
     border-radius: 5px;
 }
-
-
 
 @media only screen and (max-width: 768px) {
 

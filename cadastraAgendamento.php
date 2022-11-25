@@ -28,8 +28,8 @@ exit();
       <ul class="nav-list">
         <li><a href="verificaLogin.php" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
         <li><a href="cadastraAgendamento.php" class="ativa">Agendar</a></li>
-        <li><a href="cadastraUsuario.php">Cadastro</a></li>
-        <li><a href="loginUsuario.php">Entrar</a></li>
+        <li><a href="cadastraAnimal.php">Animais</a></li>
+        <li><a href="painelUsuario.php">Perfil</a></li>
       </ul>
     </nav>
   </header>

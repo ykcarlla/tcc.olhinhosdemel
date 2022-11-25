@@ -15,6 +15,7 @@ if (isset($_POST['btnSalvar'])) {
   $telefone = $_POST['telefone'];
   $email = $_POST['email'];
   $data_nasc =  $_POST['data_nasc'];
+  $senha = $_POST['senha'];
 
   $sql = "UPDATE tutores SET 
                 nome='$nome', 
@@ -22,7 +23,8 @@ if (isset($_POST['btnSalvar'])) {
                 cpf='$cpf',
                 data_nasc='$data_nasc',
                 telefone='$telefone',   
-                email='$email'
+                email='$email',
+                senha='$senha'
             WHERE id_tutores='$id'";
 
   mysqli_query($conn, $sql);
@@ -35,6 +37,7 @@ if (isset($_POST['btnSalvar'])) {
     $_SESSION['cpf'] = $cpf;
     $_SESSION['telefone'] = $telefone;
     $_SESSION['data_nasc'] = $data_nasc;
+    $_SESSION['senha'] = $senha;
     header("Location: painelUsuario.php");
   } else {
     echo "<script> alert('Ocorreu algum erro.') </script>";
@@ -66,7 +69,7 @@ if (isset($_POST['btnSalvar'])) {
       <li><a href="#">Agendamentos</a></li>
       <li><a href="#">Usuários</a></li>
       <li><a href="/cadastraAdm.php">Cadastro</a></li>
-      <li><a href="/logout.php">Sair</a></li>
+      <li><a href="/logoutUsuario.php">Sair</a></li>
     </ul>
   </nav>
 </header>
@@ -101,20 +104,19 @@ if (isset($_POST['btnSalvar'])) {
       </div>
       <div class="col-md-6">
         <label class="control-label" for="email">E-mail:</label>
-        <input class="form-control" type="email" name="email" value="<?php echo $_SESSION['email'] ?>" >
+        <input class="form-control" type="email" name="email" value="<?php echo $_SESSION['email']?>" >
       </div>
-      
+      <div class="col-md-6">
+        <label class="control-label" for="email">Senha:</label>
+        <input class="form-control" type="text" name="senha" value="<?php echo $_SESSION['senha']?>" >
+      </div>
 
       <div class="form-group">
         <button class='btn' id="enviar" type="submit" value="Salvar" name="btnSalvar">Salvar</button>
         <button class='btn btn-outline-danger' value="Cancelar" name="btnCancelar">Cancelar</button>
       </div>
     </form>
-    <form action="excluirPerfil.php" method="$_POST">
-    <div class="form-group">
-        <button class='btn' id="excluir" type="submit" value="excluir" name="btnexcluir">Excluir</button>
-      </div>
-    </form>
+    
   </div>
 </div>
 

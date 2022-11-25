@@ -26,10 +26,11 @@ if (!isset($_SESSION['logado'])) {
         <div class="line3"></div>
       </div>
       <ul class="nav-list">
-        <li><a href="verificaLogin.php" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
-        <li><a href="casdatraAgendamento.php" class="ativa">Agendar</a></li>
-        <li><a href="cadastraUsuario.php">Cadastro</a></li>
-        <li><a href="loginUsuario.php">Entrar</a></li>
+                  <li><a href="verificaLogin.php" class="principal" style="white-space: nowrap;">Página Inicial</a></li>
+                  <li><a href="/agendamentos.php" class="ativa">Agendamentos</a></li>
+                  <li><a href="/listaTutores.php">Usuários</a></li>
+                  <li><a href="/cadastraAdm.php">Cadastro</a></li>
+                  <li><a href="/loginUsuario.php">Sair</a></li>
       </ul>
     </nav>
   </header>

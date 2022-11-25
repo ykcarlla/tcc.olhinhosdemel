@@ -99,7 +99,31 @@
     background: #fff;
     border-radius: 10px;
     padding: 2rem;
+    border: 2px #AFD4FF solid;
   }
+.a {
+  font-weight: bold;
+}
+
+.b {
+  border: #AFD4FF solid 2px;
+  border-radius: 5px;
+  padding: 2px;
+  font-weight:bolder;
+}
+
+.btn {
+  width:280px;
+  height: 45px;
+  font-size: large;
+  background: #AFD4FF;
+}
+
+.btn:hover {
+  background: #378ef0;
+  color: #fff;
+}
+
   @media (max-width: 999px) {
     body {
       overflow-x: hidden;

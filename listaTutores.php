@@ -14,7 +14,6 @@ if (!$_SESSION['adm']){
 }
 $sql = "SELECT * FROM tutores";
 $sql_animal = "SELECT * FROM animais";
-
 $query = mysqli_query($conn, $sql);
 
 $query_animal = mysqli_query($conn, $sql_animal);
@@ -43,10 +42,10 @@ $query_animal = mysqli_query($conn, $sql_animal);
                 </div>
 
                 <div class="nav__items">
-                  <li><a href="#">Agendamentos</a></li>
-                  <li><a href="#" class="ativa">Usuários</a></li>
+                  <li><a href="/agendamentos.php">Agendamentos</a></li>
+                  <li><a href="/listaTutores.php" class="ativa">Usuários</a></li>
                   <li><a href="/cadastraAdm.php">Cadastro</a></li>
-                  <li><a href="/loginAdm.php">Entrar</a></li>
+                  <li><a href="/loginUsuario.php">Sair</a></li>
 
                 </div>
               </ul>
@@ -57,8 +56,7 @@ $query_animal = mysqli_query($conn, $sql_animal);
 <div class='container'>
 
 <div class="user-header">
-    <h3 class='p-3'>tutores Cadastrados</h3>
-    <a href="cadastraUsuario.php" class="btn btn-success">Cadastrar novo</a>
+    <h3 class='p-3'>Tutores Cadastrados</h3>
 </div>
     
 
@@ -95,7 +93,6 @@ $query_animal = mysqli_query($conn, $sql_animal);
     
 <div class="user-header">
     <h3 class='p-3'>Animais Cadastrados</h3>
-    <a href="cadastraUsuario.php" class="btn btn-success">Cadastrar novo</a>
 </div>
     
 

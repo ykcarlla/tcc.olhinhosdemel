@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('conexao.php');
-if (!isset($_SESSION['logado'])) {
+if (!isset($_SESSION['logado']) || $_SESSION['adm']==false) {
     header('location: loginUsuario.php');
   exit();
   }
@@ -9,16 +9,13 @@ if (!isset($_SESSION['logado'])) {
     header('location: semPermissao.php');
     exit(); 
   }
-$id_animal = $_GET['id_animal'];
+$id_agendamento_agendar = $_GET['id_agendamento_agendar'];
 
-
-
-$sql = "DELETE FROM animais WHERE id_animal = '$id_animal'";
-
+$sql = "DELETE FROM agendamento_agendar WHERE id_agendamento_agendar = '$id_agendamento_agendar'";
 
 mysqli_query($conn, $sql);
 if (mysqli_affected_rows($conn) > 0) {
-    header("Location: ../listaTutores.php");
+    header("Location: ../agendamentos.php");
 } else {
     echo "<script>alert('Houve algum erro.');</script>";
     mysqli_error($conn);

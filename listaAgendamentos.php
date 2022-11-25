@@ -9,9 +9,14 @@ if (!isset($_SESSION['logado'])) {
 exit();
 }
 
+$sql1 = "SELECT * FROM agendamento_agendar";
+
+$query1 = mysqli_query($conn, $sql1);
+
+if($query1){
 $data = $_POST['data'];
 $sql = "SELECT * FROM agendamento_agendar WHERE data_agendamento = '$data'";
-
+} 
 $query = mysqli_query($conn, $sql);
 ?>
 
@@ -39,9 +44,9 @@ $query = mysqli_query($conn, $sql);
 
                 <div class="nav__items">
                   <li><a href="/listaAgendamentos.php" class="ativa">Agendamentos</a></li>
-                  <li><a href="/listaUsuarios.php">Usuários</a></li>
+                  <li><a href="/listaTutores.php">Usuários</a></li>
                   <li><a href="/cadastraAdm.php">Cadastro</a></li>
-                  <li><a href="/loginAdm.php">Entrar</a></li>
+                  <li><a href="/loginUsuario.php">Sair</a></li>
 
                 </div>
               </ul>
@@ -56,39 +61,70 @@ $query = mysqli_query($conn, $sql);
 </div>
     
 <div class="card-agenda">
-    <table class='table table-hover'>
-        <tr>
-            <td>Data</td>
-        </tr>
-
-        <?php
-        while ($dados = mysqli_fetch_array($query)) { ?>
-            <tr>
-                <td><?php echo $data?></td>
-                <td><?php echo $dados['hora'] ?></td>
+<?php while ($dados = mysqli_fetch_array($query)) { ?>
+<div class="header" style="display:flex; justify-content: space-between">
+<?php if($dados){?>
+<h3><?php echo $dados['hora'] ?>h</h3>
+<?php }?>
+<button class="btn" href='excluirAgendamento.php?id_agendamento_agendar=<?php echo $dados['id_agendamento_agendar'] ?>' onclick='confirmar_agendamento("<?php echo $dados['id_agendamento_agendar'] ?>")'>Fechar agendamento</button>
+</div>
+<?php if($dados){?>
                 <?php
                 $id_tutor = $dados['tutor'];
-                $sql_tutor = "SELECT nome FROM tutores WHERE id_tutores = $id_tutor";              
+                $sql_tutor = "SELECT * FROM tutores WHERE id_tutores = $id_tutor";              
                 $query_tutor = mysqli_query($conn, $sql_tutor);
                 $dados_tutor = mysqli_fetch_array($query_tutor);
                 ?>
 
                 <?php
-                $id_animal = $dados['animais'];
-                $sql_animal = "SELECT nome FROM animais WHERE id_animal = $id_animal";              
+                $id_animal = $dados['animal'];
+                $sql_animal = "SELECT * FROM animais WHERE id_animal = $id_animal";              
                 $query_animal = mysqli_query($conn, $sql_animal);
                 $dados_animal = mysqli_fetch_array($query_animal);
                 ?>
-                <td><?php echo $dados_tutor['nome'] ?></td>
-                <td colspan="2" class="text-center">
-            </tr>
+
+<div class="dados" style="display:flex; flex-direction: row; gap:15rem; font-size: 20px;">
+
+<div class="dados-tutor" style="display:flex; flex-direction: column; gap:5px;">
+<p class="b">DADOS DO DONO</p>
+<p><span class="a">Nome:</span> <?php echo $dados_tutor['nome'] ?></p>
+<p><span class="a">Sobrenome:</span> <?php echo $dados_tutor['sobrenome'] ?></p>
+<p><span class="a">E-mail:</span> <?php echo $dados_tutor['email'] ?></p>
+<p><span class="a">CPF:</span> <?php echo $dados_tutor['cpf'] ?></p>
+<p><span class="a">Data Nascimento:</span> <?php echo $dados_tutor['data_nasc'] ?></p>
+<p><span class="a">Telefone:</span> <?php echo $dados_tutor['telefone'] ?></p>
+</div>
+
+<div class="dados-animal_um">
+<p class="b">DADOS DO ANIMAL</p>
+<p><span class="a">Nome:</span> <?php echo $dados_animal['nome'] ?></p>
+<p><span class="a">Espécie:</span> <?php echo $dados_animal['especie']?></p>
+<p><span class="a">Sexo:</span> <?php echo $dados_animal['sexo']?></p>
+<p><span class="a">Raça:</span> <?php echo $dados_animal['raca'] ?></p>
+<p><span class="a">Cor:</span> <?php echo $dados_animal['cor'] ?></p>
+</div>
+<div class="dados-animal_dois" style="margin-top: 3rem">
+<p><span class="a">Porte:</span> <?php echo $dados_animal['porte'] ?></p>
+<p><span class="a">Vacinado:</span> <?php echo $dados_animal['vacinacao'] ?></p>
+<p><span class="a">Vermes:</span> <?php echo $dados_animal['vermes'] ?></p>
+<p><span class="a">Doenças:</span> <?php echo $dados_animal['doenca'] ?></p>
+<p><span class="a">Comportamento:</span> <?php echo $dados_animal['comportamento'] ?></p>
+</div>
+
+</div>
+  
         <?php } ?>
-    </table>
+        <?php }?>
+</div>
+    
                 
 </div>
 <script>
 
-
+function confirmar_agendamento(id_agendamento_agendar) {
+        if (confirm('Você realmente deseja fechar esse agendamento?'))
+            location.href = 'excluirAgendamento.php?id_agendamento_agendar=' + id_agendamento_agendar;
+    }
     
 class MobileNavbar {
     constructor(mobileMenu, navList, navLinks) {
